@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommend Books</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: black; color: white;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default" style="background-color:#00a65a;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav">
+                    <li id="home"><a href="/" class="nav-link">Home</a></li>
+                    <li id="recommend"><a href="/recommend" class="nav-link">Recommend</a></li>
+                    <li id="top_books"><a href="/top_books" class="nav-link">Top Books</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        /* Ensure uniform text color for all tabs */
+        .navbar-nav > li > a {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        /* Highlight the active tab */
+        .nav li.active a {
+            background-color: white !important;
+            color: #00a65a !important;
+            border-radius: 5px;
+        }
+
+        /* Ensuring All Book Cards Have the Same Size */
+        .thumbnail {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .thumbnail img {
+            height: 150px;
+            width: auto;
+            object-fit: cover;
+        }
+
+        .caption {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .caption h4, .caption p {
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script>
+        // JavaScript to highlight the active tab
+        var path = window.location.pathname;
+        document.querySelectorAll(".nav li").forEach(function (li) {
+            if (li.querySelector("a").getAttribute("href") === path) {
+                li.classList.add("active");
+            }
+        });
+    </script>
+
+   
+
+
+    <!-- Search Box -->
+<div class="container text-center">
+    <div>
+        <h3 style="
+            text-align: center; 
+            color: white; 
+            font-size: 4em; 
+            font-family: 'Arial', sans-serif; 
+            font-weight: bold; 
+            margin-top: 20px; 
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+            background-color:rgb(16, 17, 17); /* Set the background color */
+            padding: 20px 40px; 
+            border-radius: 10px;">
+            Find Book Recommendations
+        </h3>
+    </div>
+    <form action="/recommend_books" method="post">
+        <div style="position: relative; display: inline-block; width: 100%;">
+            <input name="user_input" type="text" class="form-control" 
+                   placeholder="Enter a book name" 
+                   value="{{ request.form['user_input'] if request.form.get('user_input') else '' }}">
+                   <!-- Clear Button -->
+                    <button type="button" 
+                    onclick="document.querySelector('input[name=user_input]').value='';" 
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: black; font-size: 18px; cursor: pointer;">
+                &#10005;
+            </button>
+        </div>
+        <br>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Recommend">
+    </form>
+</div>
+
+    <!-- Error Message -->
+{% if error_message %}
+<div class="container text-center" style="margin-top: 20px;">
+    <p class="alert" style="padding: 10px; font-size: 1.2em;">
+        <!-- Conditional Coloring -->
+        {% if error_type == 'empty' %}
+            <span style="color: red;">{{ error_message }}</span>
+        {% elif error_type == 'not_found' %}
+            <span style="color: orange;">{{ error_message }}</span>
+        {% else %}
+            <span style="color: blue;">{{ error_message }}</span>
+        {% endif %}
+    </p>
+</div>
+{% endif %}
+
+    <!-- Recommended Books -->
+    {% if data %}
+    <div class="container">
+        <h2 class="text-center">Recommended Books</h2>
+        <div class="row">
+            {% for i in data %}
+                <div class="col-md-3" style="margin-top:20px;">
+                    <div class="thumbnail" style="background-color: black; color: white; border: 1px solid white;">
+                        <img src="{{ i[2] }}" style="height: 150px; width: auto;">
+                        <div class="caption text-center">
+                            <h4 style="color: #e0e0e0;">{{i[0]}}</h4>
+                            <p style="color: #e0e0e0;">By {{i[1]}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <br>
+    <br>
+
+    

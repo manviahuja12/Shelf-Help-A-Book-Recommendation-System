@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 50 Books</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+
+<body style="background-color: black; color: white;">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-default" style="background-color:#00a65a;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav navbar-nav">
+                    <li id="home"><a href="/" class="nav-link">Home</a></li>
+                    <li id="recommend"><a href="/recommend" class="nav-link">Recommend</a></li>
+                    <li id="top_books"><a href="/top_books" class="nav-link">Top Books</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <style>
+        /* Make text color bright white for all tabs */
+.navbar-nav > li > a {
+    color: white !important;
+    font-weight: bold;
+}
+
+        /* Highlight the active tab */
+        .nav li.active a {
+            background-color: white !important;
+            color: #00a65a !important; /* Green text for active tab */
+            border-radius: 5px;
+        }
+
+        /* Ensuring All Book Cards Have the Same Size */
+        .thumbnail {
+            height: 350px; /* Set a fixed height for all book cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center; /* Center content */
+            padding: 10px; /* Space around content */
+        }
+
+        .thumbnail img {
+            height: 150px; /* Fixed image height */
+            width: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensures uniform image size */
+        }
+
+        .caption {
+            flex-grow: 1; /* Ensures text stays aligned */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .caption h4, .caption p {
+            margin-bottom: 5px; /* Ensures spacing remains uniform */
+        }
+
+    </style>
+    
+    <script>
+        // JavaScript to highlight the active tab
+        var path = window.location.pathname;
+        document.querySelectorAll(".nav li").forEach(function (li) {
+            if (li.querySelector("a").getAttribute("href") === path) {
+                li.classList.add("active"); // Adds Bootstrap's 'active' class
+            }
+        });
+    </script>
+
+    <!-- Top 50 Books Section -->
+    <div class="container" style="margin-top: 50px;">
+        <div>
+            <h1 style="
+                text-align: center; 
+                color: white; 
+                font-size: 4em; 
+                font-family: 'Arial', sans-serif; 
+                font-weight: bold; 
+                margin-top: 20px; 
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+                background-color: #272d2d; /* Set the background color */
+                padding: 20px 40px; 
+                border-radius: 10px;">
+                Top 50 Books
+            </h1>
+        </div>
+        <div class="row">
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3" style="margin-top:20px;">
+                    <div class="thumbnail" style="background-color: black; color: white; border: 1px solid white; min-height: 320px;">
+                        <img src="{{ image[i] }}" style="height: 150px; width: auto;">
+                        <div class="caption text-center">
+                            <h4 style="color: #e0e0e0;">{{ book_name[i] }}</h4>
+                            <p style="color: #e0e0e0;">By {{ author[i] }}</p>
+                            <p style="color: #e0e0e0;">Votes: {{ votes[i] }}</p>
+                            <p style="color: #e0e0e0;">Rating: {{ "%.1f"|format(rating[i]) }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

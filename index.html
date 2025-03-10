@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+<!-- Slick Carousel CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+<style>
+    /* Add spacing between sections */
+    section {
+        margin-bottom: 50px; /* Increased spacing */
+        padding: 20px;
+    }
+
+    /* Improved Carousel Highlighting */
+    .carousel-container {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)); /* Subtle gradient */
+        padding: 20px;
+        border-radius: 15px; /* Smooth, rounded edges */
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3); /* Soft outer glow */
+        transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .carousel-container:hover {
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5); /* Stronger glow on hover */
+    }
+
+    /* Slick carousel adjustments */
+    .slick-slide {
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .slick-center {
+        transform: scale(1.2);
+    }
+
+    /* Book styling */
+    .book-img {
+        width: 120px;
+        height: 180px;
+        object-fit: cover;
+        margin: auto;
+    }
+
+    .book-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 5px;
+        color: white; /* Ensuring readability */
+    }
+
+    .book-author {
+        font-size: 14px;
+        color: lightgray;
+    }
+
+    /* Space out text elements */
+    h1, h2, p {
+        margin-bottom: 20px; /* Ensure consistent spacing */
+    } 
+</style>
+
+
+</head>
+
+<body style="background-color: black; color: white;">
+
+<!-- Navbar -->
+<nav class="navbar navbar-default" style="background-color:#00a65a; margin: 0;">
+    <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li id="home"><a href="/" class="nav-link">Home</a></li>
+                <li id="recommend"><a href="/recommend" class="nav-link">Recommend</a></li>
+                <li id="top_books"><a href="/top_books" class="nav-link">Top Books</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Make text color bright white for all tabs */
+    .navbar-nav > li > a {
+        color: white !important;
+        font-weight: bold;
+    }
+
+    /* Highlight the active tab */
+    .nav li.active a {
+        background-color: white !important;
+        color: #00a65a !important; /* Green text for active tab */
+        border-radius: 5px;
+    }
+
+    /* Prevent horizontal scrolling */
+    body, html {
+        overflow-x: hidden;
+
+        
+    }
+</style>
+
+<script>
+    // JavaScript to highlight the active tab
+    var path = window.location.pathname;
+    document.querySelectorAll(".nav li").forEach(function (li) {
+        if (li.querySelector("a").getAttribute("href") === path) {
+            li.classList.add("active"); // Adds Bootstrap's 'active' class
+        }
+    });
+</script>
+
+ <!-- Title Section -->
+ <div>
+    <h1 style="
+        text-align: center; 
+        color: white; 
+        font-size: 4em; 
+        font-family: 'Arial', sans-serif; 
+        font-weight: bold; 
+        margin-top: 20px; 
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); 
+        background-color: #272d2d; /* Set the background color */
+        padding: 20px 40px; 
+        border-radius: 10px;">
+        Shelf Help
+    </h1>
+</div>
+        
+<br>
+<br>
+
+        <!-- Bootstrap Carousel for Books -->
+        <div class="carousel-container">
+            <div class="book-carousel">
+                {% for i in range(carousel_books|length) %}
+                    <div>
+                        <img src="{{ carousel_images[i] }}" class="book-img" alt="Book Cover">
+                        <h4 class="book-title">{{ carousel_books[i] }}</h4>
+                        <p class="book-author">{{ carousel_authors[i] }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+<br>
+<br>
+        <!-- Main Content -->
+        <div class="content text-light text-center py-5">
+            <div class="container">
+                
+                <p class="lead">
+                    Books are more than just words on a page—they are windows into different worlds, time machines to the past and future,
+                    and companions in moments of solitude. A great book can inspire, challenge, and comfort us, sparking emotions we never 
+                    expected. But with so many options out there, finding your next perfect read can feel overwhelming. 
+                    <Br> 
+                    <strong>That’s where we come in!
+                    </strong>
+                </p>
+
+<br>
+<br>
+        
+        <p class="lead">
+            <strong>Shelf Help</strong> is your personal book assistant, designed to eliminate the guesswork in discovering your next read. Whether you're 
+            seeking a thrilling adventure, a heartwarming story, or a thought-provoking masterpiece, Shelf Help offers personalized recommendations tailored 
+            to your unique interests.
+            <br>
+            <br>
+            Our system combines popular books with personalized recommendations based on your interests, providing books that are not only trending but 
+            also tailored to your unique tastes, to ensure that every book you discover is one that truly resonates with you.
+        </p>
+        
+<br>
+<br>
+
+        <!-- Banner Section -->
+        <div class="container-fluid p-0">
+          <img src="{{ url_for('static', filename='banner.jpg') }}" 
+             alt="Shelf Help - Book Recommendation System" 
+             style="width: 100%; height: 60vh; display: block;  margin-bottom: 40px;">
+        </div>
+
+<br>
+<br>
+
+<h2 class="mt-5">🛠️ How Does It Work?</h2>
+<p class="lead">We offer <strong>two types of book recommendations</strong>:</p>
+       
+<br>
+<br>
+
+        <!-- Styled List -->
+        <ul class="recommendation-list">
+            <li>
+                <span class="emoji">🔥</span> 
+                <div>
+                    <strong>Popularity-Based:</strong> Shows the <strong>Top 50 books</strong> based on overall ratings. (Best for general readers!)
+                </div>
+            </li>
+            <li>
+                <span class="emoji">🔄</span> 
+                <div>
+                    <strong>Collaborative Filtering:</strong> Uses <strong>cosine similarity</strong> on user ratings for <strong>personalized recommendations</strong>.
+                </div>
+            </li>
+        </ul>
+
+        <br>
+        <br>
+        
+        <!-- Buttons -->
+        <div class="mt-4">
+            <a href="/recommend" class="btn btn-success btn-lg mx-2">🔍 Find Book Recommendations</a> 
+            &nbsp&nbsp&nbsp&nbsp
+            <a href="/top_books" class="btn btn-primary btn-lg mx-2">📖 View Top 50 Books</a>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<!-- Container for the button (center alignment) -->
+<div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <button onclick="showAllBooks()" class="btn btn-warning">View All Books</button>
+</div>
+
+<!-- Section to Display All Books -->
+<div id="all-books" style="display: none; margin-top: 20px;">
+    <div id="books-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
+</div>
+
+<!-- Loading Indicator -->
+<div id="loading" style="display: none; text-align: center; color: white; margin-top: 20px;">
+    <p>Loading books...</p>
+</div>
+
+<script>
+function showAllBooks() {
+    let booksDiv = document.getElementById("all-books");
+
+    // Check if the books list is already visible
+    if (booksDiv.style.display === "block") {
+        // If it's visible, hide it
+        booksDiv.style.display = "none";
+    } else {
+        // If it's hidden, fetch the books and show them
+        document.getElementById("loading").style.display = "block";  // Show loading indicator
+        fetch('/books')  // Call Flask backend to get book data
+            .then(response => response.json())
+            .then(data => {
+                let booksListDiv = document.getElementById("books-list");
+                booksListDiv.innerHTML = "";  // Clear previous content
+
+                // Loop through book data and display only titles
+                data.forEach(book => {
+                    let bookItem = `<div style="border: 1px solid white; padding: 10px; width: calc(33% - 20px); box-sizing: border-box;">
+                        <h3 style="color: white; text-align: center;">${book.title}</h3>
+                    </div>`;
+                    booksListDiv.innerHTML += bookItem;
+                });
+
+                // Show books and hide loading indicator
+                booksDiv.style.display = "block";  
+                document.getElementById("loading").style.display = "none";  
+            })
+            .catch(error => {
+                console.error("Error loading books:", error);
+                document.getElementById("loading").innerHTML = "<p style='color: red;'>Failed to load books. Please try again later.</p>";
+            });
+    }
+}
+</script>
+
+</script>
+
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-white pt-4">
+    <!-- Section: Links -->
+    <section class="container-fluid text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column: Shelf Help Info (Left) -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mb-4">
+            <h1 class="mb-4">Shelf Help</h1>
+          
+          <p>
+            Shelf Help makes book discovery easy by matching you with personalized recommendations that fit your unique interests. 
+            Say goodbye to endless browsing and find your next favorite read effortlessly!
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column: Follow Us (Center) -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mb-4">
+            <h1 class="mb-4">Follow Us</h1>
+            <p>Stay connected with us on social media:</p>
+            <a href="https://x.com/elonmusk" class="btn btn-primary">Twitter</a>
+            <a href="https://www.youtube.com/watch?v=ukzFI9rgwfU" class="btn btn-danger">YouTube</a>
+            <a href="#" class="btn btn-success ">GitHub</a>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column: Contact Us (Right) -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mb-4">
+            <h1 class="mb-4">Contact Us</h1>
+            <p>Email: <strong>support@bookrecommender.com</strong></p>
+            <p>Phone: <strong>+123 456 7890</strong></p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </section>
+    <!-- Section: Links -->
+
+    <!-- Copyright -->
+    <div class="text-center p-2" style="background-color: #FAC536;">
+      © 2025 Copyright <a class="text-reset fw-bold" href="#">All Rights Reserved ShelfHelp</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+  
+  
+
+
+
+<br>
+<br>
+<br>
+
+<style>
+    .content {
+        background-color: #000; /* Black background */
+        min-height: 100vh; /* Ensures full-screen height */
+    }
+    
+    .recommendation-list {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        max-width: 600px;
+        margin: auto;
+    }
+    
+    .recommendation-list li {
+        background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        display: flex;
+        align-items: center;  /* Fixes vertical alignment */
+        gap: 12px; /* Space between emoji and text */
+    }
+
+    .emoji {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px; /* Fixed width for uniform spacing */
+    }
+
+    .recommendation-list li div {
+        flex: 1;
+    }
+
+    .btn-lg {
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 8px;
+    }
+
+    .carousel-img {
+        height: 250px;
+        width: auto;
+        margin: auto;
+        display: block;
+        object-fit: cover;
+    }
+    
+    .book-title {
+        color: #e0e0e0;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .book-author {
+        color: #b0b0b0;
+        font-size: 16px;
+    }
+    
+    .view-all-books {
+        background-color: #FFA500; /* Orange */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    }
+    
+    .view-all-books:hover {
+        background-color: #FF8C00; /* Darker orange */
+        
+    }
+    
+
+</style>
+ 
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- jQuery (Required for Slick) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Slick Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('.book-carousel').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 3,  // Show 3 books at a time
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ],
+            autoplay: true,
+            autoplaySpeed: 2000,
+            dots: true
+        });
+    });
+</script>
+
+</body>
+</html>
+
