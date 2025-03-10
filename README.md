@@ -1,7 +1,7 @@
 <h1 align="center"> Shelf-Help-A-Book-Recommendation-System </h1>
 
 <p align="center">
-  <img src="Shelf-Help-A-Book-Recommendation-System/Website_Files/static/banner.jpg" width="300px" height="250px">
+  <img src="Website_Files/static/banner.jpg" width="300px" height="250px">
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
