@@ -15,11 +15,14 @@ Shelf Help is a book recommendation system that suggests books based on user inp
 The main objective is to create a book recommendation system for users. Recommender systems are really critical in some industries as they can generate a huge
 amount of income when they are efficient or also be a way to stand out significantly from competitors. 
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ### Methods Used
 * Descriptive Statistics
-* Data Visualization
 * Machine Learning
+* Web Development
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2> :floppy_disk: Data </h2>
 
@@ -44,12 +47,23 @@ Contains the book rating information. Ratings (Book-Rating) are either explicit,
 expressed on a scale from 1-10 (higher values denoting higher appreciation), or implicit,
 expressed by 0.
 
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 <h2> :clipboard: Project Description </h2>
 
-* EDA - Performed exploratory data analysis on numerical and categorical data.
-* Data Cleaning - Missing value imputation,Outlier Treatment
-* Feature Selection - Used User-ID,ISBN and Books-Rating for model development.
-* Model development - Tried Popularity based model and Collaborative filtering.
+* Importing Libraries: Loaded essential Python libraries like flask, numpy, pandas, and scikit-learn for data manipulation, building the recommender system, and web development.
+
+* Loading the Dataset: Loaded the book rating dataset (books.pkl) and performed initial data checks to ensure the data was clean and suitable for modeling.
+
+* Preliminary Analysis: Conducted a brief analysis to understand the dataset, including checking distributions, identifying missing values, and summarizing key statistics.
+
+* Building Recommender System:
+      - Popularity Based: Developed a recommender system based on book popularity, suggesting the most highly rated books to users.
+      - Collaborative Filtering Based: Built a collaborative filtering-based model that recommends books to users based on the preferences of similar users.
+  
+* Exporting Data through Pickle: Saved the trained recommender model and other necessary data into .pkl files for easy loading and use on the web application.
+
+* Created a Website: Designed a simple web application using Flask to present the recommender system, allowing users to get book recommendations based on either popularity or collaborative filtering.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
