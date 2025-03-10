@@ -80,3 +80,19 @@ target items. In simple words here, we try to search for the look-alike customer
 based on what his or her lookalike has chosen. Let us understand with an example. X and Y are
 two similar users and X user has watched A, B, and C movie. And Y user has watched B, C, and D
 movie then we will recommend A movie to Y user and D movie to X user.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+<h2> :clipboard: Future Scope </h2>
+
+Given more information regarding the books dataset, namely features like Genre, Description etc., we could implement a content-filtering based recommendation system and compare the results with the existing collaborative-filtering based system.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<h2> :clipboard: Summary </h2>
+
+Shelf Help is a book recommendation system that suggests books using popularity-based and collaborative filtering methods. It leverages a dataset with user ratings, book details, and demographics. The system was built using Python libraries like Flask, NumPy, and scikit-learn.
+
+It offers two types of recommendations:
+
+Popularity-Based: Recommends popular books.
+Collaborative Filtering: Recommends books based on similar users’ preferences.
