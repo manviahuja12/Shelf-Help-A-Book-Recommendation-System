@@ -51,7 +51,7 @@ expressed by 0.
 
 <h2> :clipboard: Project Description </h2>
 
-* Importing Libraries: Loaded essential Python libraries like flask, numpy, pandas, and scikit-learn for data manipulation, building the recommender system, and web development.
+* Importing Libraries: Loaded essential Python libraries like flask, numpy and pandas for data manipulation, building the recommender system, and web development.
 
 * Loading the Dataset: Loaded the book rating dataset (books.pkl) and performed initial data checks to ensure the data was clean and suitable for modeling.
 
